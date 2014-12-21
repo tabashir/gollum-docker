@@ -8,8 +8,8 @@ By default it exposes port 4567
 See: http://stackoverflow.com/questions/9634703/strong-access-control-for-gollum and https://gist.github.com/troelskn/2224709
 
 ## Setup
-clone your document git repo into files/local/gollum/wikidata
-copy files/local/gollum/users.yml.template to files/local/gollum/users.yml and edit to taste
+1. clone your document git repo into files/local/gollum/wikidata
+1. copy files/local/gollum/users.yml.template to files/local/gollum/users.yml and edit to taste
 
 ## Running the image
 docker run -p 4567:4567 -v `pwd`/files/local:/local -t gollum /sbin/my_init -- ./serve.sh
