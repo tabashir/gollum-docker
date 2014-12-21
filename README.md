@@ -1,25 +1,15 @@
-# PHP Wiki Standalone Docker
+# Docker Gollum repo
 
-By default it exposes ports 80 and 443
+By default it exposes port 4567
 
-## Getting the image
+## Credits
+* Uses phusion/baseimage https://github.com/phusion/baseimage-docker for easy stable init enviroment
+* Uses authentication inspired by: [vigntom](http://stackoverflow.com/users/1820285/vigntom) and [Troels Knak-Nielsen](https://gist.github.com/troelskn)
+See: http://stackoverflow.com/questions/9634703/strong-access-control-for-gollum and https://gist.github.com/troelskn/2224709
 
-    docker pull --tag="pmwiki" docker.mckinley.biz/pmwiki:latest
-    
+## Setup
+clone your document git repo into files/local/gollum/wikidata
+copy files/local/gollum/users.yml.template to files/local/gollum/users.yml and edit to taste
+
 ## Running the image
-
-You will need to make the ports available to the outside world using something like:
-
-    docker run -p 80:80 -p 443:443 -i -t pmwiki 
-    
-
-## Building
-
-To build it, use:
-    
-    docker build -t pmwiki .
-
-    
-## Credentials
-* Shell user: user
-* Shell password (for sudo): user
+docker run -p 4567:4567 -v `pwd`/files/local:/local -t gollum /sbin/my_init -- ./serve.sh
