@@ -6,7 +6,7 @@ module Precious
 
   class App < Sinatra::Base
 		@thisdir = File.expand_path(File.dirname(__FILE__))
-		User = Struct.new(:name, :email, :password_hash, :can_write)
+		User = Struct.new(:name, :email, :password_hash)
 
 		before /^\/(edit|create|delete|livepreview|revert)/ do
 			authorize_write!
@@ -14,7 +14,6 @@ module Precious
 
 		helpers do
 			def authorize_write!
-			def authenticate!
 				@_auth ||=  Rack::Auth::Basic::Request.new(request.env)
 				if @_auth.provided?
 				end
@@ -25,9 +24,6 @@ module Precious
 					response['WWW-Authenticate'] = %(Basic realm="Wiki Edit")
 					throw(:halt, [401, "Not authorized\n"])
 				end
-			end
-
-				throw(:halt, [403, "Forbidden\n"]) unless @user.can_write
 			end
 
 			def users
