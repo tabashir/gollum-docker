@@ -1,0 +1,9 @@
+- - A Writer
+  - writer@example.com
+  - e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret
+  - true
+
+- - A reader
+  - reader@example.com
+  - e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret
+  - false
